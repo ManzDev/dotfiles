@@ -24,12 +24,13 @@ sh install.sh
 
 ## Requisites
 
-- Use a non-root user (for example, manz). Create it:
+If you haven't a non-root user (for example, manz), create it:
 
 ```bash
 adduser manz --quiet
 usermod -aG sudo manz
 apt-get update -y && apt-get install -y sudo git
+su manz
 ```
 
 ## More info

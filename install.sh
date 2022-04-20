@@ -46,7 +46,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 # PNPM install
 curl -fsSL https://get.pnpm.io/install.sh | PNPM_VERSION=7.0.0-rc.7 sh -
 pnpm setup
-pnpm install -g svgo wipeclean ttf2woff
+$HOME/.local/share/pnpm/pnpm install -g svgo wipeclean ttf2woff
 
 # Rust install
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
