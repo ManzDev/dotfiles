@@ -74,7 +74,7 @@ cd woff2
 mkdir out
 cd out
 cmake ..
-make && make install
+make && sudo make install
 sudo cp woff2_* /usr/local/bin/
 cd ..
 cd ..
