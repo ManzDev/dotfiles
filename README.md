@@ -17,10 +17,20 @@
 ```bash
 git clone https://github.com/manzdev/dotfiles ~/.dotfiles
 cd ~/.dotfiles
-sudo sh install.sh
+sh install.sh
 ```
 
-* Note: Do not run as root this file! (Use sudo)
+* Note: Do not run as root/sudo this file!
+
+## Requisites
+
+- Use a non-root user (for example, manz) as root
+
+```bash
+adduser manz --quiet
+usermod -aG sudo manz
+apt-get update -y && apt-get install -y sudo git
+```
 
 ## More info
 

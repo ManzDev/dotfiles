@@ -3,11 +3,6 @@
 # Script for prepare Debian
 # 2022 - Manz (manz.dev)
 
-# Prerequisites:
-#  adduser $USER --quiet
-#  usermod -aG sudo $USER
-#  apt-get update -y && apt-get install -y sudo
-
 # Update linux
 sudo apt-get autoremove -y
 sudo apt-get upgrade -y
@@ -28,6 +23,8 @@ sudo apt-get install -y \
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 echo source $HOME/.dotfiles/.zshrc >> ~/.zshrc
 
+PATH=$HOME/bin:/usr/local/bin:$HOME/.nvm:/usr/local/go/bin:$HOME/.deno/bin:$HOME/.cargo/bin:/usr/share/go/bin:$HOME/.local/share/pnpm:$PATH
+
 # Go install
 wget --quiet https://go.dev/dl/go1.18.1.linux-amd64.tar.gz
 tar -xvf go1.18.1.linux-amd64.tar.gz
@@ -43,7 +40,7 @@ curl -fsSL https://deno.land/x/install/install.sh | sh
 
 # Node install
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-nvm install --lts
+# TODO: nvm install --lts
 
 # PNPM install
 curl -fsSL https://get.pnpm.io/install.sh | PNPM_VERSION=7.0.0-rc.7 sh -

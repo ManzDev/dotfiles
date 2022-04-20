@@ -33,6 +33,6 @@ eval "$(zoxide init zsh)"
 rm ~/.zcompdump*; compinit
 
 # PATH
-export PATH=$HOME/bin:/usr/local/bin:$HOME/.nvm:$PATH:/usr/local/go/bin:$DENO_INSTALL/bin:$HOME/.cargo/bin:$GOPATH/bin:$PNPM_HOME:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$HOME/.nvm:/usr/local/go/bin:$DENO_INSTALL/bin:$HOME/.cargo/bin:$GOPATH/bin:$PNPM_HOME:$PATH
 
-echo "$(cat $HOME/dotfiles/banner)" | lolcat
+echo "$(cat $HOME/.dotfiles/banner)" | lolcat
