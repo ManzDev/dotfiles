@@ -23,7 +23,8 @@ sudo apt-get install -y \
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 echo source $HOME/.dotfiles/.zshrc >> ~/.zshrc
 
-PATH=$HOME/bin:/usr/local/bin:$HOME/.nvm:/usr/local/go/bin:$HOME/.deno/bin:$HOME/.cargo/bin:/usr/share/go/bin:$HOME/.local/share/pnpm:$PATH
+PNPM_HOME=$HOME/.local/share/pnpm
+PATH=$HOME/bin:/usr/local/bin:$HOME/.nvm:/usr/local/go/bin:$HOME/.deno/bin:$HOME/.cargo/bin:/usr/share/go/bin:$PNPM_HOME:$PATH
 
 # Go install
 wget --quiet https://go.dev/dl/go1.18.1.linux-amd64.tar.gz
@@ -52,7 +53,6 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 # Cargo installations
 sudo apt-get install libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev -y
-source $HOME/.cargo/env
 cargo install jless
 cargo install zellij
 cargo install hyperfine
@@ -84,3 +84,5 @@ rm -rf woff2
 
 # Change to ZSH
 sudo chsh -s /usr/bin/zsh
+
+zsh
