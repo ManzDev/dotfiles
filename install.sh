@@ -44,7 +44,7 @@ curl -fsSL https://deno.land/x/install/install.sh | sh
 
 # Node install
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-source /home/manz/.nvm/nvm.sh
+source ~/.bashrc
 nvm install --lts
 npm install -g svgo wipeclean ttf2woff
 
