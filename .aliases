@@ -1,0 +1,8 @@
+alias cls="clear"
+alias tree="exa --icons --tree -L 1 -I node_modules"
+alias ls="exa --icons"
+alias dir="exa --icons -lh"
+alias grep="grep --color"
+alias cat="bat"
+alias diff="icdiff"
+alias gitlog="git log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --all"
