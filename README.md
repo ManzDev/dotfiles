@@ -24,7 +24,7 @@ sh install.sh
 
 ## Requisites
 
-- Use a non-root user (for example, manz) as root
+- Use a non-root user (for example, manz). Create it:
 
 ```bash
 adduser manz --quiet
