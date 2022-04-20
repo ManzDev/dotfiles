@@ -19,6 +19,9 @@ sudo apt-get install -y \
   bat exa \
   sl lolcat
 
+# Fix batcat -> bat
+sudo ln -s /usr/bin/batcat /usr/local/bin/bat
+
 # Oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 echo source $HOME/.dotfiles/.zshrc >> ~/.zshrc
@@ -41,12 +44,12 @@ curl -fsSL https://deno.land/x/install/install.sh | sh
 
 # Node install
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-# TODO: nvm install --lts
+source /home/manz/.nvm/nvm.sh
+nvm install --lts
+npm install -g svgo wipeclean ttf2woff
 
 # PNPM install
 curl -fsSL https://get.pnpm.io/install.sh | PNPM_VERSION=7.0.0-rc.7 sh -
-pnpm setup
-$HOME/.local/share/pnpm/pnpm install -g svgo wipeclean ttf2woff
 
 # Rust install
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
