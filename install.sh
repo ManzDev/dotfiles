@@ -16,10 +16,10 @@ sudo apt-get install -y \
   ccze jq less catimg nnn zoxide \
   tldr curl httpie man googler ddgr neofetch \
   htop ncdu icdiff \
-  unzip zip p7zip-full \
+  unzip zip bzip2 p7zip-full \
   locales locales-all \
   bat exa \
-  sl lolcat
+  sl lolcat cmatrix ffmpeg
 
 # Fix batcat -> bat
 sudo ln -s /usr/bin/batcat /usr/local/bin/bat

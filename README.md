@@ -1,16 +1,35 @@
 # ManzDev dotfiles
 
-- ZSH + OH-MY-ZSH + Agnoster theme + Completion plugins
-- Essentials tools (wget, git, make...)
-- CLI Editors (vim, nano, micro)
-- CLI tools (ccze, jq, jless, catimg, nnn, z, htop, ncdu, icdiff...)
-- API/Request tools (curl, http, googler, ddgr...)
-- Help + fun (man, tldr, sl, lolcat, wipeclean)
-- Compressors/conversors (unzip, zip, p7zip, svgo, ttf2woff, woff2)
-- Modern commands (bat, exa, glow, duf, zellij, hyperfine)
-- Language + Package Managers (Go / Rust / Deno)
-- Node / NVM / PNPM
-- Docker
+Script to prepare your GNU/Linux terminal (WSL also) in a «superterminal» with modern, autocompleted commands and other features.
+
+## Includes
+
+- **Shell**: ZSH + OH-MY-ZSH + Agnoster theme
+- **Plugins**: Zgen plugin manager + History & Red/green completion commands
+- **Essentials tools**: wget + git + make + cmake + g++
+- **CLI Editors**: vim + nano + micro
+- **CLI tools**: ccze + jq + nnn
+- **API/Request tools**: curl + http + googler + ddgr
+- **Help/Info**: man + tldr + neofetch
+- **Fun**: sl + lolcat + wipeclean + cmatrix
+- **Compressors/conversors**: unzip + zip + bzip2 + p7zip + svgo + ttf2woff + woff2 + ffmpeg
+- **Language + Package Managers**: Go + Rust + Deno + Node/NVM/PNPM
+- **Containers**: Docker
+
+| **Modern commands** |
+|-|
+| bat (cat) |
+| exa (ls, tree) |
+| glow (cat .md) |
+| jless (cat .json) |
+| catimg (image cat) |
+| duf (df) |
+| ncdu (du) |
+| zoxide (cd) |
+| htop (top) |
+| icdiff (diff) |
+| zellij (tmux) |
+| hyperfine (time) |
 
 ## Installation
 
