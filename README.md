@@ -17,7 +17,7 @@
 ```bash
 git clone https://github.com/manzdev/dotfiles ~/.dotfiles
 cd ~/.dotfiles
-sh install.sh
+bash install.sh
 ```
 
 * Note: Do not run as root/sudo this file!
