@@ -3,6 +3,8 @@
 # Script for prepare Debian
 # 2022 - Manz (manz.dev)
 
+export DEBIAN_FRONTEND=noninteractive
+
 # Update linux
 sudo apt-get autoremove -y
 sudo apt-get upgrade -y
@@ -42,14 +44,12 @@ go install github.com/charmbracelet/glow@latest
 # Deno install
 curl -fsSL https://deno.land/x/install/install.sh | sh
 
-# Node install
+# Node/NPM/PNPM install
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-source ~/.bashrc
+curl -fsSL https://get.pnpm.io/install.sh | PNPM_VERSION=7.0.0-rc.7 sh -
+source $HOME/.nvm/nvm.sh
 nvm install --lts
 npm install -g svgo wipeclean ttf2woff
-
-# PNPM install
-curl -fsSL https://get.pnpm.io/install.sh | PNPM_VERSION=7.0.0-rc.7 sh -
 
 # Rust install
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y

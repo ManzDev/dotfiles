@@ -1,16 +1,16 @@
 # ManzDev dotfiles
 
-- ZSH / OH-MY-ZSH with Agnoster theme and completion plugins
+- ZSH + OH-MY-ZSH + Agnoster theme + Completion plugins
 - Essentials tools (wget, git, make...)
-- Editors (vim, nano, micro)
+- CLI Editors (vim, nano, micro)
 - CLI tools (ccze, jq, jless, catimg, nnn, z, htop, ncdu, icdiff...)
-- Requests (curl, http, googler, ddgr...)
-- Help & fun (man, tldr, sl, lolcat, wipeclean)
+- API/Request tools (curl, http, googler, ddgr...)
+- Help + fun (man, tldr, sl, lolcat, wipeclean)
 - Compressors/conversors (unzip, zip, p7zip, svgo, ttf2woff, woff2)
-- Go / Rust
-- Docker
-- Deno / Node / NVM / PNPM
 - Modern commands (bat, exa, glow, duf, zellij, hyperfine)
+- Language + Package Managers (Go / Rust / Deno)
+- Node / NVM / PNPM
+- Docker
 
 ## Installation
 
@@ -24,7 +24,7 @@ sh install.sh
 
 ## Requisites
 
-If you haven't a non-root user (for example, manz), create it:
+If you haven't a non-root user with sudo privileges, create it before run this script:
 
 ```bash
 adduser manz --quiet
