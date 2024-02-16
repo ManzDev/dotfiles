@@ -20,7 +20,8 @@ sudo apt-get install -y \
   locales locales-all \
   bat exa \
   sl lolcat cmatrix ffmpeg
-
+# Update tldr
+tldr -u
 # Fix batcat -> bat
 sudo ln -s /usr/bin/batcat /usr/local/bin/bat
 
@@ -32,10 +33,10 @@ PNPM_HOME=$HOME/.local/share/pnpm
 PATH=$HOME/bin:/usr/local/bin:$HOME/.nvm:/usr/local/go/bin:$HOME/.deno/bin:$HOME/.cargo/bin:/usr/share/go/bin:$PNPM_HOME:$PATH
 
 # Go install
-wget --quiet https://go.dev/dl/go1.18.1.linux-amd64.tar.gz
-tar -xvf go1.18.1.linux-amd64.tar.gz
+wget --quiet https://go.dev/dl/go1.22.0.linux-amd64.tar.gz
+tar -xvf go1.22.0.linux-amd64.tar.gz
 sudo mv go /usr/share
-rm go1.18.1.linux-amd64.tar.gz
+rm go1.22.0.linux-amd64.tar.gz
 
 # Go installations
 go install github.com/muesli/duf@latest
