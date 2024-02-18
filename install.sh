@@ -64,7 +64,8 @@ PATH=$HOME/bin:/usr/local/bin:$HOME/.nvm:/usr/local/go/bin:$HOME/.deno/bin:$HOME
 # Go install
 wget --quiet https://go.dev/dl/go1.22.0.linux-amd64.tar.gz
 tar -xvf go1.22.0.linux-amd64.tar.gz
-sudo mv go /usr/share
+cp -r go /usr/share
+rm -rf go
 rm go1.22.0.linux-amd64.tar.gz
 
 # Node/NPM/PNPM install
