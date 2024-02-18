@@ -45,14 +45,10 @@ bash install.sh
 
 If you haven't a non-root user with sudo privileges, create it before run this script:
 
-# desde root
 
-```su root```
-o
-```sudo su```
 
 ```bash
-#en caso de no haber creado usuario
+
 adduser [USER] --quiet 
 usermod -aG sudo [USER]
 apt-get update -y && apt-get install -y sudo git
