@@ -1,6 +1,6 @@
 ZSH_THEME="agnoster"
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-completions)
-autoload -U compinit && compinit
+plugins=(git colored-man-pages)
+
 # Reload theme
 source $ZSH/oh-my-zsh.sh
 
@@ -13,7 +13,6 @@ zgen load zsh-users/zsh-completions
 source ~/.dotfiles/.aliases
 
 export PAGER="less"
-
 
 # go
 export GOPATH=/usr/share/go
@@ -31,9 +30,14 @@ export PNPM_HOME=$HOME/.local/share/pnpm
 
 # zoxide
 eval "$(zoxide init zsh)"
-rm -rf ~/.zcompdump*; compinit
+rm -f ~/.zcompdump*; compinit
 
 # PATH
 export PATH=$HOME/bin:/usr/games:/usr/local/bin:$HOME/.nvm:/usr/local/go/bin:$DENO_INSTALL/bin:$HOME/.cargo/bin:$GOPATH/bin:$PNPM_HOME:$PATH
-
 export ESC=/mnt/c/users/karho/Desktop/
+#echo "$(cat $HOME/.dotfiles/banner)" | lolcat
+
+
+catimg $HOME/.dotfiles/skull.png
+
+
