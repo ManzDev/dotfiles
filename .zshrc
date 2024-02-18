@@ -37,7 +37,7 @@ export PATH=$HOME/bin:/usr/games:/usr/local/bin:$HOME/.nvm:/usr/local/go/bin:$DE
 export ESC=/mnt/c/users/karho/Desktop/
 #echo "$(cat $HOME/.dotfiles/banner)" | lolcat
 
-
-catimg $HOME/.dotfiles/skull.png
+neofetch
+#catimg $HOME/.dotfiles/skull.png
 
 
