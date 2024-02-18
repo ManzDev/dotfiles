@@ -41,9 +41,9 @@ sudo apt-get upgrade -y
 
 
 sudo apt-get install -y \
-  bash zsh zgen sudo wget git lsb-release \
-  vim nano libbrotli-dev \
-  jq less catimg zoxide \
+  bash zsh zgen sudo wget git g++ make gnupg gnupg2 ca-certificates lsb-release \
+  vim nano libbrotli-dev cmake \
+  ccze jq less catimg nnn zoxide \
   tldr curl httpie man googler ddgr neofetch \
   htop ncdu icdiff \
   unzip zip bzip2 p7zip-full \
