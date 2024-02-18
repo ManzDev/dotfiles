@@ -10,21 +10,50 @@ sudo apt-get autoremove -y
 sudo apt-get upgrade -y
 
 # Essentials
+# zsh es un potente intérprete de comandos para sistemas operativos de tipo Unix
+# sudo otorga a los usuarios no root acceso temporal a los privilegios elevados
+# Zgen le proporciona algunos comandos simples para administrar complementos. Mantén tu .zshrc limpio y simple.
+# wget para recuperar contenido y archivos de varios servidores web
+# lsb_release -a te da la distro de linux que tienes
+# vim y nano procesadores de textos
+# libbrotli-dev compresor
+# jq para extraer una parte de un json
+# less es el paginador (para que al hacer un cat no muestre el final de un texto largo directamente)
+# catimg para ver una imagen en terminal
+# zoxide usando el comando z [nombre de carpeta en la que ya has estado] te evitas tener que meter rutas completas
+# tldr manual version corta de los comandos man es lo mismo pero mas texto
+# curl accede o descarga un fichero httpie comando http hace lo mismo pero te da mas info
+# googler y ddgr te da en texto los resultados de google
+# neofetch informacion de sistema
+# htop informacion de uso de sistema
+# unzip zip bzip2 p7zip-full compresores
+# ncdu comando  para ver uso de disco duro
+# icdiff o diff para ver diferencias entre 2 ficheros
+# locales locales-all para evitar problemas de idiomas
+# bat alternativa a cat (modificado con alias para que cat sea bat)
+# exa alternativa a ls (modificado con alias para que ls sea exa)
+# lolcat alternativa a cat con el texto multicolor con pipe lolcat 
+# cmatrix salvapantallas tipo matrix
+# ffmpeg utilidad de video
+
+
+
+
+
 sudo apt-get install -y \
-  bash zsh zgen sudo wget git g++ make gnupg gnupg2 ca-certificates lsb-release \
-  vim nano libbrotli-dev cmake \
-  ccze jq less catimg nnn zoxide \
+  bash zsh zgen sudo wget git lsb-release \
+  vim nano libbrotli-dev \
+  jq less catimg zoxide \
   tldr curl httpie man googler ddgr neofetch \
   htop ncdu icdiff \
   unzip zip bzip2 p7zip-full \
   locales locales-all \
   bat exa \
   sl lolcat cmatrix ffmpeg
-# Update tldr
-tldr -u
+
 # Fix batcat -> bat
 sudo ln -s /usr/bin/batcat /usr/local/bin/bat
-
+tldr -u
 # Oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 echo source $HOME/.dotfiles/.zshrc >> ~/.zshrc
@@ -38,37 +67,22 @@ tar -xvf go1.22.0.linux-amd64.tar.gz
 sudo mv go /usr/share
 rm go1.22.0.linux-amd64.tar.gz
 
-# Go installations
-go install github.com/muesli/duf@latest
-go install github.com/charmbracelet/glow@latest
-
-# Deno install
-curl -fsSL https://deno.land/x/install/install.sh | sh
-
 # Node/NPM/PNPM install
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-curl -fsSL https://get.pnpm.io/install.sh | PNPM_VERSION=7.0.0-rc.7 sh -
+curl -fsSL https://get.pnpm.io/install.sh
 source $HOME/.nvm/nvm.sh
 nvm install --lts
 npm install -g svgo wipeclean ttf2woff
 
-# Rust install
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+# Go installations
+go install github.com/muesli/duf@latest
+go install github.com/charmbracelet/glow@latest
 
-# Cargo installations
-sudo apt-get install libxcb-render0-dev libxcb-shape0-dev libxcb-xfixes0-dev -y
-cargo install jless
-cargo install zellij
-cargo install hyperfine
 
-# Docker install
-curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian \
-  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt-get update -y && sudo apt-get install docker-ce docker-ce-cli containerd.io -y
-sudo usermod -aG docker $USER
-sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
+
+
+
+
 
 # Micro install
 curl https://getmic.ro | sudo bash

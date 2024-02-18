@@ -1,4 +1,4 @@
-# ManzDev dotfiles
+# ManzDev dotfiles modificado para mi
 
 Script to prepare your GNU/Linux terminal (WSL also) in a «superterminal» with modern, autocompleted commands and other features.
 
@@ -34,7 +34,7 @@ Script to prepare your GNU/Linux terminal (WSL also) in a «superterminal» with
 ## Installation
 
 ```bash
-git clone https://github.com/manzdev/dotfiles ~/.dotfiles
+git clone git@github.com:Santiagomadaw/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 bash install.sh
 ```
@@ -45,11 +45,18 @@ bash install.sh
 
 If you haven't a non-root user with sudo privileges, create it before run this script:
 
+# desde root
+
+```su root```
+o
+```sudo su```
+
 ```bash
-adduser manz --quiet
-usermod -aG sudo manz
+#en caso de no haber creado usuario
+adduser [USER] --quiet 
+usermod -aG sudo [USER]
 apt-get update -y && apt-get install -y sudo git
-su manz
+su [USER]
 ```
 
 ## More info
