@@ -1,0 +1,61 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ $# -ne 2 ]]; then
+    echo "Uso: $(basename "$0") <input> <output.mp4>"
+    exit 1
+fi
+
+INPUT="$1"
+OUTPUT="$2"
+
+BITRATE=$(ffprobe -v error \
+    -select_streams v:0 \
+    -show_entries stream=bit_rate \
+    -of default=noprint_wrappers=1:nokey=1 \
+    "$INPUT")
+
+if [[ -z "$BITRATE" || "$BITRATE" == "N/A" ]]; then
+    echo "No se pudo obtener el bitrate del vídeo."
+    exit 1
+fi
+
+DEFAULT_KBPS=$((BITRATE / 1000))
+
+read -rp "Bitrate del vídeo: ${DEFAULT_KBPS} kb/s. Nuevo bitrate [Enter=${DEFAULT_KBPS}]: " USER_KBPS
+
+USER_KBPS=${USER_KBPS:-$DEFAULT_KBPS}
+
+PASSLOG=$(mktemp -u)
+
+cleanup() {
+    rm -f "${PASSLOG}"* ffmpeg2pass-0.log* 2>/dev/null || true
+}
+trap cleanup EXIT
+
+echo
+echo "Codificando a ${USER_KBPS} kb/s..."
+
+ffmpeg -y \
+    -i "$INPUT" \
+    -c:v libx264 \
+    -preset slow \
+    -b:v "${USER_KBPS}k" \
+    -pass 1 \
+    -passlogfile "$PASSLOG" \
+    -an \
+    -f mp4 /dev/null
+
+ffmpeg -y \
+    -i "$INPUT" \
+    -c:v libx264 \
+    -preset slow \
+    -b:v "${USER_KBPS}k" \
+    -pass 2 \
+    -passlogfile "$PASSLOG" \
+    -c:a copy \
+    -movflags +faststart \
+    "$OUTPUT"
+
+echo
+echo "Hecho: $OUTPUT"

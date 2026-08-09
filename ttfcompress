@@ -1,0 +1,7 @@
+#!/bin/bash
+
+INPUT=$1
+OUTPUT=${1%.*}
+
+ttf2woff $INPUT $OUTPUT.woff
+woff2_compress $INPUT

@@ -1,61 +1,96 @@
-# ManzDev dotfiles
+# DotFiles
 
-Script to prepare your GNU/Linux terminal (WSL also) in a «superterminal» with modern, autocompleted commands and other features.
-
-## Includes
-
-- **Shell**: ZSH + OH-MY-ZSH + Agnoster theme
-- **Plugins**: Zgen plugin manager + History & Red/green completion commands
-- **Essentials tools**: wget + git + make + cmake + g++
-- **CLI Editors**: vim + nano + micro
-- **CLI tools**: ccze + jq + nnn
-- **API/Request tools**: curl + http + googler + ddgr
-- **Help/Info**: man + tldr + neofetch
-- **Fun**: sl + lolcat + wipeclean + cmatrix
-- **Compressors/conversors**: unzip + zip + bzip2 + p7zip + svgo + ttf2woff + woff2 + ffmpeg
-- **Language + Package Managers**: Go + Rust + Deno + Node/NVM/PNPM
-- **Containers**: Docker
-
-| **Modern commands** |
-|-|
-| bat (cat) |
-| exa (ls, tree) |
-| glow (cat .md) |
-| jless (cat .json) |
-| catimg (image cat) |
-| duf (df) |
-| ncdu (du) |
-| zoxide (cd) |
-| htop (top) |
-| icdiff (diff) |
-| zellij (tmux) |
-| hyperfine (time) |
-
-## Installation
-
-```bash
-git clone https://github.com/manzdev/dotfiles ~/.dotfiles
-cd ~/.dotfiles
-bash install.sh
+```
+                                _
+ _ __ ___   __ _ _ __  ____  __| | _____   __
+| '_ ` _ \ / _` | '_ \|_  / / _` |/ _ \ \ / /
+| | | | | | (_| | | | |/ / | (_| |  __/\ V /
+|_| |_| |_|\__,_|_| |_/___(_)__,_|\___| \_/
 ```
 
-* Note: Do not run as root/sudo this file!
+Configuración personal de entorno para Linux.
 
-## Requisites
-
-If you haven't a non-root user with sudo privileges, create it before run this script:
+## Instalación
 
 ```bash
-adduser manz --quiet
-usermod -aG sudo manz
-apt-get update -y && apt-get install -y sudo git
-su manz
+git clone https://github.com/manz/dotfiles.git ~/dotfiles
+~/dotfiles/install.sh
 ```
 
-## More info
+> **Nota:** Ejecutar como usuario regular, no con sudo.
 
-![Modern commands](https://pbs.twimg.com/media/FQZHmm5aIAkTXEw?format=jpg&name=small)
+## Features
 
-- 1: https://twitter.com/Manz/status/1514983676739739658
-- 2: https://twitter.com/Manz/status/1516430573451059214
+| Categoría | Paquetes |
+|-|-|
+| **Shell** | fish, fisher, tide |
+| **Terminal** | tmux, htop, ncdu, less, man, ccze |
+| **Editores** | vim, nano, micro |
+| **Git** | git, gh |
+| **Red/Utils** | curl, xh, wget, jq |
+| **Multimedia** | imagemagick, ffmpeg |
 
+### Herramientas modernas
+
+| Herramienta | Descripción |
+|-|-|
+| **eza** | `ls` moderno con icons |
+| **bat** | `cat` con syntax highlighting |
+| **zoxide** | `cd` inteligente |
+| **fzf** | Fuzzy finder |
+| **duf** | `df` moderno |
+| **xh** | HTTP client como httpie |
+| **glow** | Markdown en terminal |
+| **catimg** | Ver imágenes en terminal |
+| **micro** | Editor de terminal |
+| **cht.sh** | Cheat sheets |
+| **lolcat** | Rainbow output |
+
+### Lenguajes y runtimes
+
+| Tecnología | Versión/Manager |
+|-|-|
+| **Node.js** | LTS via pnpm |
+| **Deno** | LTS via pnpm |
+| **pnpm** | Package manager |
+| **Rust** | via rustup |
+| **Go** | 1.22.5 |
+| **Python** | 3.12 via uv |
+
+### Herramientas Rust
+
+- `choose` - alternativa a cut
+- `jless` - JSON viewer
+
+### Paquetes Node globales
+
+- `svgo` - Optimizador SVG
+- `wipeclean` - Limpiar node_modules
+- `ttf2woff` - Convertir fuentes
+- `servor` - Servidor dev
+
+### Fish Shell
+
+- **Fisher** - Plugin manager
+- **Tide** - Prompt moderno
+- **Alias:**
+  - `ls` → `eza --icons`
+  - `cat` → `batcat`
+  - `tree` → `eza --icons --tree -L 1 -I node_modules`
+- **zoxide** integrado
+
+## Estructura
+
+```
+dotfiles/
+├── install.sh      # Script de instalación
+└── README.md       # Este archivo
+```
+
+## Licencia
+
+MIT
+
+---
+
+📚 [Más sobre configurar tu terminal](https://terminaldelinux.com/terminal)
