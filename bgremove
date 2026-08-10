@@ -1,0 +1,66 @@
+#!/usr/bin/env -S deno run --node-modules-dir=none --allow-import --allow-net --allow-read --allow-write --allow-ffi --allow-env
+
+import { AutoModel, AutoProcessor, RawImage } from "npm:@huggingface/transformers";
+import sharp from "npm:sharp";
+
+const imagePath = Deno.args[0];
+if (!imagePath) {
+  console.log("Uso: ./bgremove <ruta-imagen> [strength]");
+  console.log("");
+  console.log("Parámetros:");
+  console.log("  <ruta-imagen>  Ruta de la imagen a procesar");
+  console.log("  [strength]     Intensidad de eliminación (default: 1.0)");
+  console.log("                   0.5 = más suave");
+  console.log("                   1.0 = normal");
+  console.log("                   1.5 = más agresivo");
+  console.log("");
+  console.log("Ejemplo:");
+  console.log("  ./bgremove foto.jpg 1.2");
+  Deno.exit(0);
+}
+
+const model_id = "onnx-community/BiRefNet-ONNX";
+console.log("Cargando modelo...");
+const model = await AutoModel.from_pretrained(model_id, { dtype: "fp8" });
+const processor = await AutoProcessor.from_pretrained(model_id);
+
+const strength = parseFloat(Deno.args[1]) || 1.0;
+
+console.log(`Procesando imagen (con fuerza ${strength})...`);
+
+const { data, info } = await sharp(imagePath).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+const image = new RawImage(new Uint8ClampedArray(data), info.width, info.height, info.channels);
+
+const { pixel_values } = await processor(image);
+const { output_image } = await model({ input_image: pixel_values });
+
+let mask = await RawImage.fromTensor(
+  output_image[0].sigmoid().mul(255).to("uint8")
+).resize(image.width, image.height);
+
+if (strength !== 1.0) {
+  const adjusted = new Uint8Array(mask.data.length);
+  for (let i = 0; i < mask.data.length; i++) {
+    const normalized = mask.data[i] / 255;
+    const adjustedValue = Math.pow(normalized, strength);
+    adjusted[i] = Math.round(adjustedValue * 255);
+  }
+  mask = new RawImage(adjusted, mask.width, mask.height, 1);
+}
+
+const result = image.clone().putAlpha(mask);
+
+let outputPath = `${imagePath}.alpha.png`;
+let counter = 0;
+while (true) {
+  try {
+    await Deno.stat(outputPath);
+    counter++;
+    outputPath = `${imagePath}.alpha.${counter}.png`;
+  } catch {
+    break;
+  }
+}
+
+await result.save(outputPath);
+console.log("¡Listo! Guardado en", outputPath);
